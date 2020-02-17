@@ -1,6 +1,8 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <script src="angular.min.js"></script>
+    <script src="app.js"></script>
     <title>Lunch Checker</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="styles/bootstrap.min.css">
@@ -8,22 +10,23 @@
       .message { font-size: 1.3em; font-weight: bold; }
     </style>
   </head>
-<body>
-   <div class="container">
-     <h1>Lunch Checker</h1>
+  <body ng-app="LunchCheck">
+    <h1>Lunch Checker</h1>
+    <div>Please keep in mind: an empty item, i.e., , , will be counted as an items
+    </div>
 
-         <div class="form-group">
-             <input id="lunch-menu" type="text"
-             placeholder="list comma separated dishes you usually have for lunch"
-             class="form-control">
-         </div>
-         <div class="form-group">
-             <button class="btn btn-default">Check If Too Much</button>
-         </div>
-         <div class="form-group message">
-           <!-- Your message can go here. -->
-         </div>
-   </div>
+      <div>Please input the list of the dishes below: </div>
 
-</body>
+    <div ng-controller='LunchCheckController'>
+
+      <input type="text" ng-model="listOfTheDishes" required>
+
+      <br>
+      <br>
+      <button  ng-click=checkIfTooMuch()>Check If Too Much</button>
+      <br>
+      <br>
+      <div>{{messageIsItEnoughFood}}</div>
+    </div>
+  </body>
 </html>
